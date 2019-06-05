@@ -4,18 +4,19 @@ export let hangman = {
   hiddenWord: 'kanye sucks',
   numberOfTries: 6,
   usedLetters: [],
+  wordblank: [],
   wordBlanks: function() {
-    let wordblank = [];
-    let array = hangman.hiddenWord.split('');
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].match(/[a-z]/i)) {
-        wordblank.push("_");
-      } else if (array[i] === " ")
+    let arrayH = hangman.hiddenWord.split('');
+    for (let i = 0; i < arrayH.length; i++) {
+      if (arrayH[i].match(/[a-z]/i)) {
+        hangman.wordblank.push("_");
+      } else if (arrayH[i] === " ")
       {
-        wordblank.push(" ");
+        hangman.wordblank.push(" ");
       }
     }
-    return wordblank.join('');
+    return hangman.wordblank.join('');
+
   },
 
   isLetterAlreadyGuessed: function(letter) {
@@ -26,9 +27,29 @@ export let hangman = {
     }
   },
 
-  // isLetterInWord: function() {
-  //
-  // },
+  isLetterInWord: function(letter) {
+    let arrayH = hangman.hiddenWord.split('');
+    if(arrayH.includes(letter)) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  replaceBlankWithLetter: function(letter) {
+    let indexes = [];
+    let arrayH = hangman.hiddenWord.split('');
+
+    for (let i = 0; i < arrayH.length; i++) {
+      if (arrayH[i] === letter) {
+        indexes.push([i]);
+      }
+    };
+    indexes.forEach(function(index) {
+      hangman.wordblank[index] = letter;
+    });
+    return hangman.wordblank.join('');
+  },
   //
   // turn: function() {
   //   if (isLetterAlreadyGuessed === true) {
