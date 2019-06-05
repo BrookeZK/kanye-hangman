@@ -16,12 +16,12 @@ $(document).ready(function() {
       let body = JSON.parse(response);
       let quote = body.quote;
       hangman.hiddenWord = quote;
+      hangman.wordBlanks();
       $('#quote').text(quote);
     }, function(error) {
       $(".errors").show();
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
-
     $(".start").hide();
     $(".game-play").show();
     $("#incorrect-Guesses").text(hangman.numberOfIncorrectGuesses);
@@ -32,5 +32,9 @@ $(document).ready(function() {
   $("form.kanye").submit(function(event) {
     event.preventDefault();
     let letter = $("#letter").val();
+    hangman.turn(letter);
+    $("#incorrect-Guesses").text(hangman.numberOfIncorrectGuesses);
+    $("#letters-Guessed").text(hangman.usedLetters);
+    $("#wisdom").text(hangman.wordblank);
   });
 });
