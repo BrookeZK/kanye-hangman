@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 export let hangman = {
   hiddenWord: 'kanye sucks',
-  numberOfTries: 6,
+  numberOfIncorrectGuesses: 6,
   usedLetters: [],
   wordblank: [],
   wordBlanks: function() {
@@ -16,7 +16,6 @@ export let hangman = {
       }
     }
     return hangman.wordblank.join('');
-
   },
 
   isLetterAlreadyGuessed: function(letter) {
@@ -48,17 +47,28 @@ export let hangman = {
     indexes.forEach(function(index) {
       hangman.wordblank[index] = letter;
     });
+    hangman.usedLetters.push(letter);
     return hangman.wordblank.join('');
   },
-  //
-  // turn: function() {
-  //   if (isLetterAlreadyGuessed === true) {
-  //     return "pick another letter";
-  //   }
-  //   if (isLetterInWord === true){
-  //
-  //   } else if (isLetterInWord === false) {
-  //
-  //   }
-  // },
+
+  turn: function(letter) {
+    if(hangman.isLetterAlreadyGuessed(letter) === true) {
+      return "pick another letter";
+    } else {
+      if (hangman.isLetterInWord(letter) === true){
+        return hangman.replaceBlankWithLetter(letter);
+      } else if (hangman.isLetterInWord(letter) === false) {
+        hangman.numberOfIncorrectGuesses--;
+        hangman.usedLetters.push(letter);
+      }
+    }
+  },
+
+  isGameOver: function(letter) {
+    if(hangman.numberOfIncorrectGuesses < 1) {
+      return "Game Over";
+    } else if(hangman.hiddenWord === hangman.wordblank.join('')) {
+      return "winning";
+    }
+  }
 }
