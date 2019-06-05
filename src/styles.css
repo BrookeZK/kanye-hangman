@@ -5,3 +5,7 @@ body {
 .game-play {
   display: none;
 }
+
+.errors {
+  display: none;
+}
