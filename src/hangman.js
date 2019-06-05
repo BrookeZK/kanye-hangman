@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export let hangman = {
   hiddenWord: 'kanye sucks',
   numberOfIncorrectGuesses: 6,
@@ -43,10 +41,10 @@ export let hangman = {
       if (arrayH[i] === letter) {
         indexes.push([i]);
       }
-    };
+    }
     indexes.forEach(function(index) {
       hangman.wordblank[index] = letter;
-    });
+    })
     hangman.usedLetters.push(letter);
     return hangman.wordblank.join('');
   },

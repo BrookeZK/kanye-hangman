@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">        
-        <title>Template</title>        
-    </head>
-    <body>        
-    </body>
+<head>
+  <meta charset="utf-8">
+  <title>Kanye Hangman</title>
+</head>
+<body>
+  <h1>Kanye Hangman</h1>
+
+  <div class="start">
+    <button id="start-game" type="button" name="button">Start Game</button>
+  </div>
+
+  <div class="game-play">
+    <form class="kanye">
+      <label for="letter">Guess a Letter</label>
+      <input id="letter" type="text" name="letter">
+      <button id="guess" type="submit" name="button">Guess</button>
+    </form>
+
+    <div class="letters-guessed">
+      <p>Letters Guessed: <span id="letters-Guessed"></span></p>
+    </div>
+    <div class="incorrect-guesses">
+      <p>Incorrect Guesses: <span id="incorrect-Guesses"></span></p>
+    </div>
+    <div class="word-blanks">
+      <p>Kanye's words of wisdom:</p>
+      <p><span id="wisdom"></span></p>
+    </div>
+  </div>
+</body>
 </html>
