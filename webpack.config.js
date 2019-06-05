@@ -17,7 +17,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Kanye Hangman',
+            title: 'KanyeHangman',
             template: './src/index.html',
             inject: 'body'
         }),
