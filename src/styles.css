@@ -9,3 +9,11 @@ body {
 .errors {
   display: none;
 }
+
+.lose, .win {
+  display: none;
+}
+
+#two, #three, #four {
+  display: none;
+}

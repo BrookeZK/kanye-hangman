@@ -5,37 +5,112 @@
   <title>Kanye Hangman</title>
 </head>
 <body>
-  <h1>Kanye Hangman</h1>
+  <div class="container">
+    <h1>Kanye Hangman</h1>
 
-  <div class="start">
-    <button id="start-game" type="button" name="button">Start Game</button>
-  </div>
-
-  <div class="game-play">
-    <form class="kanye">
-      <label for="letter">Guess a Letter</label>
-      <input id="letter" type="text" name="letter" maxlength="1" pattern="[A-Za-z]">
-      <button id="guess" type="submit" name="button">Guess</button>
-    </form>
-    <div class="secret-phrase">
-      <p>secret phrase: <span id="quote"></span></p>
-    </div>
-    <div class="errors">
-      <p>error: <span id="showErrors"></span></p>
-    </div>
-    <div class="letters-guessed">
-      <p>Letters Guessed: <span id="letters-Guessed"></span></p>
-    </div>
-    <div class="incorrect-guesses">
-      <p>Incorrect Guesses: <span id="incorrect-Guesses"></span></p>
-    </div>
-    <div class="word-blanks">
-      <p>Kanye's words of wisdom:</p>
-      <p><span id="wisdom"></span></p>
+    <div class="start">
+      <button id="start-game" type="button" name="button">Start Game</button>
     </div>
 
-    <div id="errors"></div>
-    <div class="gif"></div>
+    <div class="game-play">
+      <form class="kanye">
+        <label for="letter">Guess a Letter</label>
+        <input id="letter" type="text" name="letter" maxlength="1" pattern="[A-Za-z]">
+        <button id="guess" type="submit" name="button">Guess</button>
+      </form>
+      <!-- <div class="secret-phrase">
+        <p>secret phrase: <span id="quote"></span></p>
+      </div> -->
+      <div class="errors">
+        <p>error: <span id="showErrors"></span></p>
+      </div>
+      <div class="letters-guessed">
+        <p>Letters Guessed: <span id="letters-Guessed"></span></p>
+      </div>
+      <div class="incorrect-guesses">
+        <p>Incorrect Guesses: <span id="incorrect-Guesses"></span></p>
+      </div>
+      <div class="word-blanks">
+        <p>Kanye's words of wisdom:</p>
+        <p><span id="wisdom"></span></p>
+      </div>
+      <div id="one">
+      <pre>
+              ------
+              |    |
+                   |
+                   |
+                   |
+                   |
+         __________|______
+       </pre>
+      </div>
+      <div id="two">
+        <pre>
+              ------
+              |    |
+              O    |
+                   |
+                   |
+                   |
+         __________|______
+         </pre>
+      </div>
+      <div id="three">
+        <pre>
+              ------
+              |    |
+              O    |
+             \|/   |
+                   |
+                   |
+         __________|______
+         </pre>
+      </div>
+      <div id="four">
+        <pre>
+              ------
+              |    |
+              O    |
+             \|/   |
+              |    |
+                   |
+         __________|______
+         </pre>
+      </div>
+
+      <div class="errors"></div>
+      <div class="kanye-gif"></div>
+    </div>
+    <div class="lose">
+      <div class="lost">
+        <h1><span id="loser"></span></h1>
+        <div id="five">
+          <pre>
+               ------
+               |    |
+               O    |
+              \|/   |
+               |    |
+              / \   |
+          __________|______
+          </pre>
+        </div>
+        <h1>Kanye's words of wisdom are: </h1>
+        <h2>"<span class="answer"></span>"</h2>
+        <div class="errors"></div>
+        <div class="lose-gif"></div>
+      </div>
+    </div>
+    <div class="win">
+      <div class="won">
+        <h1><span id="winner"></span></h1>
+        <h1>Kanye's words of wisdom are: </h1>
+        <h2>"<span class="answer"></span>"</h2>
+        <div class="errors"></div>
+        <div class="win-gif"></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
