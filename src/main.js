@@ -12,21 +12,24 @@ $(document).ready(function() {
     let kanyeService = new KanyeService();
     let promise = kanyeService.getQuote();
 
-    promise.then(function(response) {
+    promise.then((response) => {
       let body = JSON.parse(response);
       let quote = body.quote;
       hangman.hiddenWord = quote;
       hangman.wordBlanks();
       $('#quote').text(quote);
-    }, function(error) {
+      $("#wisdom").text(hangman.wordblank);
+    }, (error) => {
       $(".errors").show();
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
+
+
     $(".start").hide();
     $(".game-play").show();
     $("#incorrect-Guesses").text(hangman.numberOfIncorrectGuesses);
     $("#letters-Guessed").text(hangman.usedLetters);
-    $("#wisdom").text(hangman.wordblank);
+    hangman.kanyeGif();
   });
 
   $("form.kanye").submit(function(event) {

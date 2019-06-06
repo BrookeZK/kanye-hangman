@@ -14,7 +14,7 @@
   <div class="game-play">
     <form class="kanye">
       <label for="letter">Guess a Letter</label>
-      <input id="letter" type="text" name="letter">
+      <input id="letter" type="text" name="letter" maxlength="1" pattern="[A-Za-z]">
       <button id="guess" type="submit" name="button">Guess</button>
     </form>
     <div class="secret-phrase">
@@ -33,6 +33,9 @@
       <p>Kanye's words of wisdom:</p>
       <p><span id="wisdom"></span></p>
     </div>
+
+    <div id="errors"></div>
+    <div class="gif"></div>
   </div>
 </body>
 </html>

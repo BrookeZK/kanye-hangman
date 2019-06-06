@@ -1,10 +1,12 @@
+import $ from 'jquery';
 export let hangman = {
   hiddenWord: 'kanye sucks',
   numberOfIncorrectGuesses: 6,
   usedLetters: [],
   wordblank: [],
   wordBlanks: function() {
-    let arrayH = hangman.hiddenWord.split('');
+    let sanitized = hangman.hiddenWord.replace(/[.,/#!$%^&*'?;:{}=\-_`~()]/g,"");
+    let arrayH = sanitized.split('');
     for (let i = 0; i < arrayH.length; i++) {
       if (arrayH[i].match(/[a-z]/i)) {
         hangman.wordblank.push("_");
@@ -13,7 +15,7 @@ export let hangman = {
         hangman.wordblank.push(" ");
       }
     }
-    return hangman.wordblank.join('');
+    return hangman.wordblank.join("");
   },
 
   isLetterAlreadyGuessed: function(letter) {
@@ -68,5 +70,22 @@ export let hangman = {
     } else if(hangman.hiddenWord === hangman.wordblank.join('')) {
       return "winning";
     }
+  },
+
+  kanyeGif: function(){
+    $.ajax({
+      url: `https://api.giphy.com/v1/gifs/random?api_key=${process.env.API_KEY}&tag=kanye&rating=R`,
+      type: 'GET',
+      data: {
+        format: 'json'
+      },
+      success: (response) => {
+        $('.gif').html(`<img src="${response.data.images.original.url}">`);
+        $('.gif').show();
+      },
+      error: () => {
+        $('#errors').text("There was an error processing your request, noob.");
+      }
+    });
   }
 }

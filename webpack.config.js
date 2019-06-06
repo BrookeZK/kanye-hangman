@@ -22,7 +22,6 @@ module.exports = {
             template: './src/index.html',
             inject: 'body'
         }),
-        new Dotenv(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -44,6 +43,7 @@ module.exports = {
             Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
             Util: 'exports-loader?Util!bootstrap/js/dist/util'
         }),
+        new Dotenv()
     ],
     module: {
         rules: [{
@@ -53,6 +53,18 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+              test: /\.(png|svg|jpg|gif)$/,
+              use: [
+                {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[path][name].[ext]',
+                  },
+
+                },
+              ],
             },
             {
                 //Rules for linter
@@ -66,7 +78,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['es2015']
                     }
                 }
             },
